@@ -1,0 +1,15 @@
+@keyframes ItemAnimation {
+  0% {
+    padding-left: 100px;
+    opacity: 0.0;
+  }
+  100% {
+    padding-left: 0px;
+    opacity: 1.0;
+  }
+}
+
+
+.item {
+  animation: ItemAnimation 0.5s;
+}

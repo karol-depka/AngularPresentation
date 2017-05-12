@@ -13,7 +13,7 @@ export class ExampleItem {
 })
 export class AppComponent {
 
-  items: ExampleItem[] = [new ExampleItem("test")];
+  items: ExampleItem[] = [new ExampleItem('test')];
 
   itemsObservable = new Observable<ExampleItem[]>((observer: Subscriber<ExampleItem[]>) => {
     setInterval(() => {

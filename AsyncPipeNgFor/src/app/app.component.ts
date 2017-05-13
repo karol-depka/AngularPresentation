@@ -14,23 +14,25 @@ export class ExampleItem {
 })
 export class AppComponent {
 
-  items2: FirebaseListObservable<any[]>;
+  items: FirebaseListObservable<any[]>;
 
   constructor(db: AngularFireDatabase) {
-    this.items2 = db.list('/items');
-    this.items2.push('TEST ' + new Date());
+    this.items = db.list('/items');
   }
 
-  items: ExampleItem[] = [new ExampleItem('test')];
+  itemsArray: ExampleItem[] = [new ExampleItem('test')];
   title = 'app works!';
 
   itemsObservable = new Observable<ExampleItem[]>(
     (observer: Subscriber<ExampleItem[]>) => {
     setInterval(() => {
-      this.items.push(new ExampleItem('item: ' + new Date()));
-      observer.next(this.items);
+      this.itemsArray.push(new ExampleItem('item: ' + new Date()));
+      observer.next(this.itemsArray);
     }, 1000);
   });
 
+  public addItem() {
+    this.items.push('TEST ' + new Date());
+  }
 
 }

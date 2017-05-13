@@ -2,7 +2,13 @@
   {{title}}
 </h1>
 
+
+<button (click)="addItem()" md-fab>
+  <md-icon class="md-24">Add Item</md-icon>
+</button>
+
 <md-card class="item"
-    *ngFor="let item of itemsObservable | async">
+    *ngFor="let item of items | async">
   Item: {{item.id}}
 </md-card>
+

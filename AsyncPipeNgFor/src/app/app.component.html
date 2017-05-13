@@ -2,4 +2,7 @@
   {{title}}
 </h1>
 
-<md-card class="item" *ngFor="let item of itemsObservable | async; ">Item: {{item.id}}</md-card>
+<md-card class="item"
+    *ngFor="let item of itemsObservable | async">
+  Item: {{item.id}}
+</md-card>

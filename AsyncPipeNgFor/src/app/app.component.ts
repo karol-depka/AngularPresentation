@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Observable, Subscriber} from "rxjs";
+import {Observable, Subscriber} from 'rxjs';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 
 export class ExampleItem {
   constructor(public id: string) {}
@@ -13,9 +14,18 @@ export class ExampleItem {
 })
 export class AppComponent {
 
-  items: ExampleItem[] = [new ExampleItem('test')];
+  items2: FirebaseListObservable<any[]>;
 
-  itemsObservable = new Observable<ExampleItem[]>((observer: Subscriber<ExampleItem[]>) => {
+  constructor(db: AngularFireDatabase) {
+    this.items2 = db.list('/items');
+    this.items2.push('TEST ' + new Date());
+  }
+
+  items: ExampleItem[] = [new ExampleItem('test')];
+  title = 'app works!';
+
+  itemsObservable = new Observable<ExampleItem[]>(
+    (observer: Subscriber<ExampleItem[]>) => {
     setInterval(() => {
       this.items.push(new ExampleItem('item: ' + new Date()));
       observer.next(this.items);
@@ -23,5 +33,4 @@ export class AppComponent {
   });
 
 
-  title = 'app works!';
 }

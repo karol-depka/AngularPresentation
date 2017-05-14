@@ -13,6 +13,12 @@
 .item {
   animation: ItemAnimation 0.5s;
 }
+.fab-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+}
 
 
 
